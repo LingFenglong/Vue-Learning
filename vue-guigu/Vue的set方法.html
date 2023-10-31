@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="./vue/vue.js"></script>
+</head>
+  <!--   Vue.set()    -->
+<body>
+
+  <div id="root">
+    <button @click="addSchoolArea">点我添加学校面积</button>
+    <h1>学校名字：{{school.name}}</h1>
+    <h1>学校位置：{{school.location}}</h1>
+    <h1 v-if="school.area">学校面积：{{school.area}}</h1>
+
+    <ul>
+      <li v-for="(person, index) in people" :key="person.id">
+        {{person.id}}-{{person.name}}-{{person.age}}-{{person.sex}}
+      </li>
+    </ul>
+  </div>
+
+  <script type="text/javascript">
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        school: {
+          name: 'hebnu',
+          location: 'sjz'
+        },
+        people: [
+          {id: '002', name: '周冬雨', age: 20, sex: '女'},
+          {id: '004', name: '温兆伦', age: 22, sex: '男'},
+          {id: '001', name: '马冬梅', age: 19, sex: '女'},
+          {id: '003', name: '周杰伦', age: 21, sex: '男'}
+        ]
+      },
+      methods: {
+        addSchoolArea() {
+          Vue.set(this.school, 'area', 8000)
+          // this.$set(this.school, 'area', 8000)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
