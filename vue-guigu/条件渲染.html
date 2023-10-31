@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="./vue/vue.js"></script>
+</head>
+  <!--    v-show    v-if    -->
+<body>
+  <div id="root">
+    <h1 @click="n++">当前n值为：{{n}}</h1>
+    <!-- <h2 v-show="n === 1">A</h2>
+    <h2 v-show="n === 2">B</h2>
+    <h2 v-show="n === 3">C</h2> -->
+
+    <!-- <h2 v-if="n === 1">A</h2>
+    <h2 v-if="n === 2">B</h2>
+    <h2 v-if="n === 3">C</h2> -->
+
+    <!-- <h2 v-if="n === 1">A</h2>
+    <h2 v-else-if="false">B</h2>
+    <h2 v-else>C</h2> -->
+
+    <template v-if="n === 1">
+      <h2>A</h2>
+      <h2>B</h2>
+      <h2>C</h2>
+      <h2>D</h2>
+    </template>
+  </div>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#root',
+      data: {
+        n: 0
+      },
+      methods: {
+        
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>

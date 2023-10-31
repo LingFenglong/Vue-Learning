@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watch</title>
+  <script type="text/javascript" src="./vue/vue.js"></script>
+</head>
+<body>
+  <!-- <div id="root">
+    <h1>今天天气很{{weather}}</h1>
+    <Button @click="changeWeather">切换天气</Button>
+  </div> -->
+
+  <div id="root">
+    <h1>今天天气很{{info}}</h1>
+    <!-- <Button @click="isHot = !isHot">切换天气</Button> -->
+    <Button @click="changeWeather">切换天气</Button>
+  </div>
+
+  <div id="root2">
+    <h1>a: {{numbers.a}}</h1>
+    <button @click="numbers.a += 1">点我a++</button> <br/>
+
+    <h1>b: {{numbers.b}}</h1>
+    <button v-on:click="++numbers.b">点我b++</button> <br/>
+  </div>
+
+  <div id="root3">
+    姓: <input type="text" v-model="lastName"/><br/>
+    名: <input type="text" v-model="firstName"/>
+    <h1>全名: {{fullName}}</h1>
+  </div>
+  
+  <script type="text/javascript">
+    // new Vue({
+    //   el: '#root',
+    //   data: {
+    //     weather: '凉爽'
+    //   },
+    //   methods: {
+    //     changeWeather() {
+    //       if (this.weather === '凉爽') {
+    //         this.weather = '炎热'
+    //       } else {
+    //         this.weather = '凉爽'
+    //       }
+    //     }
+    //   }
+    // })
+
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        isHot: true
+      },
+      computed: {
+        info() {
+          // getter
+          return this.isHot ? '炎热' : '凉爽'
+        }
+      },
+      methods: {
+        changeWeather() {
+          this.isHot = !this.isHot
+        }
+      },
+      watch: {
+        // isHot: {
+        //   immediate: true,
+        //   handler(oldValue, newValue) {
+        //     console.log('isHot CHANGED!', oldValue, newValue);
+        //   }
+        // }
+        // isHot(oldValue, newValue) {
+        //   console.log('isHot CHANGED!', oldValue, newValue);
+        // }
+      }
+    })
+
+    vm.$watch('isHot', function (newValue, oldValue) {
+      console.log('isHot CHANGED!', oldValue, newValue);
+    })
+
+    // vm.$watch('info', {
+    //   immediate: true,
+    //   handler(oldValue, newValue) {
+    //     console.log('info CHANGED!', oldValue, newValue);
+    //   }
+    // })
+
+    const vm2 = new Vue({
+      el: '#root2',
+      data: {
+        numbers: {
+          a: 1,
+          b: 1
+        }
+      },
+      methods: {
+      },
+      watch: {
+        'numbers.a': {
+          handler(newValue, oldValue) {
+            console.log(`numbers.a ---- oldValue: ${oldValue}    newValue: ${newValue}`);
+          }
+        },
+        numbers: {
+          deep: true,
+          handler(newValue, oldValue) {
+            console.log(`@@@deep numbers ---- oldValue: ${oldValue.a} ${oldValue.b}    newValue: ${newValue.a} ${oldValue.b}`);
+          }
+        }
+      }
+    })
+
+    new Vue({
+      el: '#root3',
+      data: {
+        lastName: "张",
+        firstName: "三",
+        fullName: "张三"
+      },
+      watch: {
+        lastName(val) {
+          setTimeout(() => {
+            this.fullName = `${val}-${this.firstName}`
+          }, 1000);
+        },
+        firstName(val) {
+          this.fullName = `${this.lastName}-${val}`
+        }
+      },
+    })
+  </script>
+</body>
+</html>

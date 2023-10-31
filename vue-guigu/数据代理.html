@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="./vue/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h1>person</h1>
+    <h2>name: {{person.name}}</h2>
+    <h2>sex: {{person.sex}}</h2>
+    <h2>age: {{person.age}}</h2>
+  </div>
+
+  <script type="text/javascript">
+    let age = 18
+    let person = {
+      name: 'zs',
+      sex: 'man'
+    }
+
+    console.log(person);
+
+    Object.defineProperty(person, 'age', {
+      // value: 18, // 值
+      // writable: true,  // 可写，修改
+      configurable: true,  // 可删除
+      enumerable: true, // 可遍历
+
+      get() {
+        // 展示数据时调用的回调方法
+        return age
+      },
+
+      set(value) {
+        // 修改数据时调用的回调方法
+        age = value
+      }
+    })
+
+    new Vue({
+      el: '#root',
+      data: {
+        person: person
+      }
+    })
+
+    o1 = {
+      x: 100
+    }
+    o2 = {
+      y: 200
+    }
+    Object.defineProperty(o2, 'x', {
+      get() {
+        return o1.x
+      },
+      set(value) {
+        o1.x = value
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>
