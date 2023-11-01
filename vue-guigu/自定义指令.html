@@ -13,10 +13,28 @@
     <button @click="n++">点我n++</button>
     <h1>n值：<span v-text="n"></span></h1>
     <h1>n增大10倍是：<span v-big="n"></span></h1>
+    <h1>n缩小10倍是：<span v-small="n"></span></h1>
+    <h1>n的2倍是：<span v-double="n"></span></h1>
     <input type="text" v-model="n" v-fbind="n"></input>
   </div>
 
   <script type="text/javascript">
+    Vue.directive('small', function(element, binding) {
+      element.innerText = binding.value / 10.0
+    })
+
+    Vue.directive('double', {
+      bind(element, binding) {
+        element.innerText = binding.value * 2
+      },
+      inserted(element, binding) {
+        
+      },
+      update(element, binding) {
+        element.innerText = binding.value * 2
+      }
+    })
+
     const vm = new Vue({
       el: '#root',
       data: {

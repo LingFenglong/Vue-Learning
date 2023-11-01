@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="./vue/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <haha></haha>
+    <school></school>
+    <hr></hr>
+    <xuesheng></xuesheng>
+  </div>
+
+  <!-- 1. 创建模板 -->
+  <script type="text/javascript">
+    const school = Vue.extend({
+      template: `
+        <div>
+          <h3>学校名称：{{schoolName}}</h3>
+          <h3>学校地址：{{address}}</h3>
+        </div>
+      `,
+      data() {
+        return {
+          schoolName: 'hebnu',
+          address: 'sjz'
+        }
+      }
+    })
+    
+    const student = Vue.extend({
+      template: `
+        <div>
+          <h3>学生姓名：{{studentName}}</h3>
+          <h3>学生年龄：{{age}}</h3>
+        </div>
+      `,
+      data() {
+        return {
+          studentName: 'zs',
+          age: 18
+        }
+      }
+    })
+
+    const haha = Vue.extend({
+      template: `
+        <div>
+          <h1>Haha</h1>
+        </div>
+      `
+    })
+
+    Vue.component('haha', haha)
+
+    new Vue({
+      el: '#root',
+      // 注册模板
+      components: {
+        school,
+        xuesheng: student
+      },
+      data: {
+        
+      },
+      methods: {
+        
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>

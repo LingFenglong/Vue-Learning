@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="./vue/vue.js"></script>
+</head>
+  <!--   life cycle    -->
+<body>
+  <div id="root">
+    <h1 :style="{opacity, color}">Vue的生命周期</h1>
+    <h1 :style="{opacity, color}">n的值为{{n}}</h1>
+    <button @click="n++">点我n+1</button>
+    <button @click="bye">点我停止透明度变换</button>
+  </div>
+
+  <script type="text/javascript">
+    new Vue({
+      el: '#root',
+      data: {
+        opacity: 1,
+        color: 'red',
+        n: 1
+      },
+      methods: {
+        bye() {
+          // clearInterval(this.timer)
+          this.$destroy()
+        }
+      },
+      beforeCreate() {
+        console.log('beforeCreate');
+      },
+      created() {
+        console.log('created');
+      },
+      beforeMount() {
+        console.log('beforeMount');
+      },
+      mounted() {
+        console.log('mounted');
+        this.timer = setInterval(() => {
+          console.log('setInterval');
+          this.opacity -= 0.01
+          if (this.opacity <= 0) {
+            this.opacity = 1
+          }
+        }, 16);
+      },
+      beforeUpdate() {
+        
+      },
+      updated() {
+        
+      },
+      beforeDestroy() {
+        console.log('即将销毁vm');
+        clearInterval(this.timer)
+      },
+      destroyed() {
+        
+      }
+    })
+  </script>
+
+</body>
+
+</html>
