@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="./vue/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <button @click="n++">点我n++</button>
+    <h1>n值：<span v-text="n"></span></h1>
+    <h1>n增大10倍是：<span v-big="n"></span></h1>
+    <input type="text" v-model="n" v-fbind="n"></input>
+  </div>
+
+  <script type="text/javascript">
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        n: 1
+      },
+      directives: {
+        //  指令和元素成功绑定时 指令所在的模板被重新解析时 调用
+        big(element, binding) {
+          element.innerText = binding.value * 10
+        },
+        fbind: {
+          // 指令和元素成功绑定时，第一次
+          bind(element, binding) {
+            element.value = binding.value
+          },
+          // 指令所在元素插入到页面时
+          inserted(element, binding) {
+            element.focus()
+          },
+          // 指令所在的模板被重新解析时
+          update(element, binding) {
+            element.value = binding.value
+          }
+        }
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>

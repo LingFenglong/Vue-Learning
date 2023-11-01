@@ -9,10 +9,10 @@
 </head>
 <body>
   <div id="root">
-    账号：<input type="text" v-model="userInfo.account"/>
+    账号：<input type="text" v-model.trim="userInfo.account"/>
     <br/><br/>
 
-    密码：<input type="password" v-model="userInfo.password"/>
+    密码：<input type="password" v-model.number="userInfo.password"/>
     <br/><br/>
 
     性别：
@@ -36,13 +36,13 @@
     <br/><br/>
 
     其他信息：
-    <textarea v-model="userInfo.other"></textarea>
+    <textarea v-model.lazy="userInfo.other"></textarea>
     <br/><br/>
 
     <input type="checkbox" v-model="userInfo.accept"/>阅读并接受<a href="#">《用户协议》</a>
     <br/><br/>
 
-    <input type="submit"/>
+    <input type="submit" @click.prevent="submitForm"/>
   </div>
 
   <script type="text/javascript">
@@ -60,7 +60,14 @@
         }
       },
       methods: {
-        
+        submitForm() {
+          if (!this.userInfo.accept) {
+            alert('请同意《用户协议》')
+            return
+          }
+
+          console.log(JSON.stringify(this.userInfo))
+        }
       }
     })  
   </script>

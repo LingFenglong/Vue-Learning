@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="./vue/vue.js"></script>
+  <script type="text/javascript" src="./vue/dayjs.min.js"></script>
+</head>
+<body>
+  <div id="root">
+    <h1>显示格式化后的时间</h1>
+    <h2>时间戳：{{time}}</h2>
+    <h2>computed实现格式化：{{localDateTime}}</h2>
+    <h2>methods实现格式化：{{fmtDateTime()}}</h2>
+    <h2>filter实现格式化：{{time | timeFilter}}</h2>
+    <h2>filter实现格式化：{{time | timeFilter('YYYY-MM-DD')}}</h2>
+    <h2>filter实现格式化：{{time | timeFilter('YYYY-MM-DD') | mySlice}}</h2>
+  </div>
+  <div id="root2">
+    <h1>{{'fsfewssgs' | mySlice}}</h1>
+  </div>
+
+  <script type="text/javascript">
+    Vue.filter('mySlice', function(val) {
+      return val.slice(0, 4)
+    })
+
+    const vm = new Vue({
+      el: '#root',
+      data: {
+
+      },
+      computed: {
+        time() {
+          return Date.now()
+        },
+        localDateTime() {
+          return dayjs().format('YYYY/MM/DD HH:mm:ss')
+        }
+      },
+      methods: {
+        fmtDateTime() {
+          return dayjs().format('YYYY/MM/DD HH:mm:ss')
+        }
+      },
+      filters: {
+        // ES形参可以具有默认值
+        timeFilter(val, fmt = 'YYYY/MM/DD HH:mm:ss') {
+          return dayjs(val).format(fmt)
+        }
+      }
+    })
+
+    new Vue({
+      el: '#root2',
+      data: {
+        
+      },
+      methods: {
+        
+      }
+    })
+  </script>
+</body>
+
+</html>

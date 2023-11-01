@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" src="./vue/vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <h1>你好，{{name}}</h1>
+    <h1 v-text="name">你好，</h1>
+
+    <div>你好，{{html}}</div>
+    <div v-text="html">你好，</div>
+    <div v-html="html">你好，</div>
+
+    <!-- Vue实例创建并接管容器后，会删除v-cloak属性 -->
+    <div v-cloak>v-cloak</div>
+
+    <div>
+      <h1 v-pre>Vue很简单</h1>
+      <h1 @click="n++">点我n+1</h1>
+      <h1 v-once>n的初始值是{{n}}</h1>
+      <h2>{{n}}</h2>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    const vm = new Vue({
+      el: '#root',
+      data: {
+        name: '尚硅谷',
+        html: `<h1>尚硅谷</h1>`,
+        n: 677
+      },
+      methods: {
+        
+      }
+    })
+
+  </script>
+
+</body>
+
+</html>
