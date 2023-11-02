@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="school">
     <h2>学校名称：{{name}}</h2>
     <h2>学校地址：{{address}}</h2>
   </div>
@@ -13,13 +13,13 @@
         name: 'hebnu',
         address: 'sjz'
       }
-    },
+    }
   }
 </script>
 
-<style scoped>
-  .demo {
-    background-color: rgb(114, 218, 241);
-    color: rgb(45, 198, 83);
+<style>
+  .school {
+    background-color: antiquewhite;
+    color: rgb(45, 86, 198);
   }
 </style>

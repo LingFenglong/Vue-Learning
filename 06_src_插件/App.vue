@@ -1,19 +1,16 @@
 <template>
   <div>
-    <School></School>
-    <hr/>
     <Student></Student>
+    <span v-random-big="10"></span> <br/>
   </div>
 </template>
 
 <script>
-  import School from './components/School'
   import Student from './components/Student'
 
   export default {
     name: 'App',
     components: {
-      School,
       Student
     }
   }
