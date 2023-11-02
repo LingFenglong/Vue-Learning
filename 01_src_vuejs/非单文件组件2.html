@@ -10,6 +10,8 @@
 
 <body>
   <div id="root">
+    <!-- 使用模板 -->
+    <app></app>
   </div>
 
   <!-- 1. 创建模板 -->
@@ -73,14 +75,17 @@
 
     Vue.component('haha', haha)
 
-    new Vue({
+    const vm = new Vue({
       el: '#root',
-      template: '<app></app>',
       // 注册模板
       components: {
         app
       }
     })
+
+    console.dir(app);
+    console.dir(Vue);
+    console.log('@@@', app.prototype.__proto__ === Vue.prototype);
 
   </script>
 
