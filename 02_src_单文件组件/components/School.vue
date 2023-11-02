@@ -1,8 +1,8 @@
 <template>
-  <div class="school">
-    <h2>学校名称：{{name}}</h2>
+  <div id="school">
+    <h2>学校名称：{{schoolName}}</h2>
     <h2>学校地址：{{address}}</h2>
-  </div>
+  </div>  
 </template>
 
 <script>
@@ -10,7 +10,7 @@
     name: 'School',
     data() {
       return {
-        name: 'hebnu',
+        schoolName: 'hb',
         address: 'sjz'
       }
     }
@@ -18,8 +18,8 @@
 </script>
 
 <style>
-  .school {
-    background-color: antiquewhite;
-    color: rgb(45, 86, 198);
+  #school {
+    background-color: red;
+    color: white;
   }
 </style>

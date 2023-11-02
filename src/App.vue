@@ -1,20 +1,17 @@
 <template>
   <div>
-    <img src="./assets/logo.png"/>
-    <school></school>
-    <student></student>
+    <h1>学Vue</h1>
+    <School></School>
   </div>
 </template>
 
 <script>
-  import school from './components/School'
-  import student from './components/Student'
+  import School from './components/School'
 
   export default {
     name: 'App',
     components: {
-      school,
-      student
+      School
     }
   }
 </script>
