@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sessionStorage</title>
+</head>
+<body>
+  <button onclick="save()">存一个数据</button>
+  <button onclick="save2()">存另一个数据</button>
+  <button onclick="remove()">删一个数据</button>
+  <button onclick="select()">查一个数据</button>
+  <button onclick="removeAll()">清空</button>
+
+  <script type="text/javascript">
+    const person = {
+      name: 'lisi',
+      age: 18
+    }
+
+    function save() {
+      sessionStorage.setItem('person', JSON.stringify(person))
+    }
+    
+    function save2() {
+      sessionStorage.setItem('person', 'haha')
+    }
+    
+    function remove() {
+      sessionStorage.removeItem('person')
+    }
+    
+    function removeAll() {
+      sessionStorage.clear()
+    }
+    
+    function select() {
+      const p = sessionStorage.getItem('person')
+      console.log(p);
+      console.log(JSON.parse(p));
+    }
+
+  </script>
+</body>
+</html>
