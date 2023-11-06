@@ -5,6 +5,7 @@
     <button @click="emitCC">触发cc事件</button>
     <button @click="onCC">绑定cc事件</button>
     <button @click="offCC">解绑cc事件</button>
+    <button @click="emitClick">触发click事件</button>
     <button @click="death">销毁student组件</button>
   </div>
 </template>
@@ -29,6 +30,9 @@
         this.$off('cc')
         // this.$off(['aa', 'cc'])  // 批量解绑
         // this.$off()  // 解绑所有
+      },
+      emitClick() {
+        this.$emit('click')
       },
       death() {
         this.$destroy()

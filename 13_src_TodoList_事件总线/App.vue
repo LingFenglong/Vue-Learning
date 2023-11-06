@@ -48,14 +48,6 @@ export default {
     },
     removeAllTodoItemDone() {
       this.todoList = this.todoList.filter(todoItem => !todoItem.done)
-    },
-    updateTodoItem(id, title) {
-      for (const todoItem of this.todoList) {
-        if (todoItem.id === id) {
-          todoItem.title = title
-          break
-        }
-      }
     }
   },
   watch: {
@@ -69,12 +61,10 @@ export default {
   mounted() {
     this.$bus.$on('changeTodoItemCheck', this.changeTodoItemCheck)
     this.$bus.$on('removeTodoItem', this.removeTodoItem)
-    this.$bus.$on('updateTodoItem', this.updateTodoItem)
   },
   beforeDestroy() {
     this.$bus.$off('changeTodoItemCheck')
     this.$bus.$off('removeTodoItem')
-    this.$bus.$off('updateTodoItem')
   }
 };
 </script>
@@ -103,13 +93,6 @@ export default {
     color: #fff;
     background-color: #da4f49;
     border: 1px solid #bd362f;
-  }
-
-  .btn-edit {
-    color: #fff;
-    background-color: orange;
-    border: 1px solid darkorange;
-    margin-right: 8px;
   }
 
   .btn-danger:hover {
