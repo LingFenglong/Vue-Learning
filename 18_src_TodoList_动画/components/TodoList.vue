@@ -1,10 +1,10 @@
 <template>
   <ul class="todo-main">
     <TodoItem
-      v-for="todoItem in todoList"
-      :key="todoItem.id"
-      :todoItem="todoItem"
-      />
+        v-for="todoItem in todoList"
+        :key="todoItem.id"
+        :todoItem="todoItem"
+    />
   </ul>
 </template>
 

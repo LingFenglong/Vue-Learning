@@ -1,16 +1,23 @@
 <template>
-  <li>
-    <label>
-      <input type="checkbox" :checked="todoItem.done" @change="changeCheck" />
-      <span v-show="!todoItem.isEdit">{{todoItem.title}}</span>
-      <input v-show="todoItem.isEdit" type="text" ref="input" :value="todoItem.title" @blur="update"/>
-    </label>
-    <button class="btn btn-danger" @click="remove">删除</button>
-    <button class="btn btn-edit" v-show="!todoItem.isEdit" @click="edit">修改</button>
-  </li>
+  <transition
+      name="animate__animated animate__bounce"
+      enter-active-class="animate__rotateInDownLeft"
+      leave-active-class="animate__rotateOutUpRight"
+      appear>
+    <li>
+      <label>
+        <input type="checkbox" :checked="todoItem.done" @change="changeCheck" />
+        <span v-show="!todoItem.isEdit">{{todoItem.title}}</span>
+        <input v-show="todoItem.isEdit" type="text" ref="input" :value="todoItem.title" @blur="update"/>
+      </label>
+      <button class="btn btn-danger" @click="remove">删除</button>
+      <button class="btn btn-edit" v-show="!todoItem.isEdit" @click="edit">修改</button>
+    </li>
+  </transition>
 </template>
 
 <script>
+  import 'animate.css'
   export default {
     props: ['todoItem'],
     methods: {
