@@ -12,7 +12,7 @@
     <button @click="incrementOdd(n)">和为奇数时++</button>
     <button @click="incrementWait(n)">等一等++</button>
     <br/>
-    <h3 style="color: red">Person人数为：{{$store.state.people.length}}</h3>
+    <h3 style="color: red">Person人数为：{{people.length}}</h3>
   </div>
 </template>
 
@@ -28,13 +28,14 @@ export default {
   },
   computed: {
     // ...mapState({num: 'num'})
-    ...mapState(['num']),
+    ...mapState('countAbout', ['num']),
+    ...mapState('personAbout', ['people']),
     // ...mapGetters({bigSum: 'bigSum'})
-    ...mapGetters(['bigSum'])
+    ...mapGetters('countAbout', ['bigSum'])
   },
   methods: {
-    ...mapActions({incrementOdd: 'addOdd', incrementWait: 'addWait'}),
-    ...mapMutations({increment: 'ADD', decrement: 'SUB'}),
+    ...mapActions('countAbout', {incrementOdd: 'addOdd', incrementWait: 'addWait'}),
+    ...mapMutations('countAbout', {increment: 'ADD', decrement: 'SUB'}),
 
     // incrementOdd() {
     //   invoke $store.dispatch.addOdd
