@@ -16,9 +16,7 @@
       <div class="col-xs-6">
         <div class="panel">
           <div class="panel-body">
-            <keep-alive :include="['Home']">
-              <router-view></router-view>
-            </keep-alive>
+            <router-view></router-view>
           </div>
         </div>
       </div>
@@ -32,6 +30,9 @@
 
   export default {
     name: 'App',
-    components: {Banner}
+    components: {Banner},
+    mounted() {
+      console.log(this)
+    }
   }
 </script>

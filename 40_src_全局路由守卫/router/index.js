@@ -6,25 +6,14 @@ import Messages from "@/pages/Messages.vue";
 import NewsDetail from "@/pages/NewsDetail.vue";
 
 const router = new VueRouter({
-  mode: 'history',
   routes: [
     {
-      name: 'about',
       path: '/about',
       component: About
     },
     {
-      name: 'home',
       path: '/home',
       component: Home,
-      beforeEnter(to, from, next) {
-        // to ===> /home
-        if (localStorage.getItem('TOKEN') === '111111') {
-          next()
-        } else {
-          alert('拒绝访问 home')
-        }
-      },
       children: [
         {
           name: 'news',
@@ -72,7 +61,6 @@ router.beforeEach((to, from, next) =>{
   console.log('to', to)
   console.log('from', from)
   console.log('next', next)
-  console.log('router', router)
 
   // 是否需要登录
   if (!to.meta.secured) {

@@ -32,6 +32,9 @@
 
   export default {
     name: 'App',
-    components: {Banner}
+    components: {Banner},
+    mounted() {
+      console.log(this)
+    }
   }
 </script>

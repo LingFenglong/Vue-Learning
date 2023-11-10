@@ -6,7 +6,6 @@ import Messages from "@/pages/Messages.vue";
 import NewsDetail from "@/pages/NewsDetail.vue";
 
 const router = new VueRouter({
-  mode: 'history',
   routes: [
     {
       name: 'about',

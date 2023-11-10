@@ -6,7 +6,6 @@ import Messages from "@/pages/Messages.vue";
 import NewsDetail from "@/pages/NewsDetail.vue";
 
 const router = new VueRouter({
-  mode: 'history',
   routes: [
     {
       name: 'about',
@@ -17,7 +16,7 @@ const router = new VueRouter({
       name: 'home',
       path: '/home',
       component: Home,
-      beforeEnter(to, from, next) {
+      beforeEnter: (to, from, next) => {
         // to ===> /home
         if (localStorage.getItem('TOKEN') === '111111') {
           next()

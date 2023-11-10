@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 :style="h2Style">Home组件内容</h2>
+    <h2>Home组件内容</h2>
     <div>
       <ul class="nav nav-tabs">
         <li>
@@ -10,23 +10,14 @@
           <router-link class="list-group-item" active-class="active" to="/home/messages">Message</router-link>
         </li>
       </ul>
-      <keep-alive :include="['News']">
-        <router-view/>
-      </keep-alive>
+      <router-view/>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Home',
-  data() {
-    return {
-      h2Style: {
-        opacity: 1.0
-      }
-    }
-  }
+  name: 'Home'
 }
 </script>
 

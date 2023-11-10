@@ -9,7 +9,10 @@
 <script>
 export default {
   name: 'NewsDetail',
-  props: ['id', 'title']
+  props: ['id', 'title'],
+  mounted() {
+    console.log(this.$route)
+  }
 }
 </script>
 

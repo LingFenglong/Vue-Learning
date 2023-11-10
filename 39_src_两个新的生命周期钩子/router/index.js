@@ -4,27 +4,15 @@ import About from "@/pages/About.vue";
 import News from "@/pages/News.vue";
 import Messages from "@/pages/Messages.vue";
 import NewsDetail from "@/pages/NewsDetail.vue";
-
-const router = new VueRouter({
-  mode: 'history',
+export default new VueRouter({
   routes: [
     {
-      name: 'about',
       path: '/about',
       component: About
     },
     {
-      name: 'home',
       path: '/home',
       component: Home,
-      beforeEnter(to, from, next) {
-        // to ===> /home
-        if (localStorage.getItem('TOKEN') === '111111') {
-          next()
-        } else {
-          alert('拒绝访问 home')
-        }
-      },
       children: [
         {
           name: 'news',
@@ -50,9 +38,6 @@ const router = new VueRouter({
                   id: $route.params.id,
                   title: $route.params.title
                 }
-              },
-              meta: {
-                secured: true
               }
             }
           ]
@@ -66,34 +51,3 @@ const router = new VueRouter({
     }
   ]
 })
-
-//全局前置路由守卫————初始化的时候被调用、每次路由切换之前被调用
-router.beforeEach((to, from, next) =>{
-  console.log('to', to)
-  console.log('from', from)
-  console.log('next', next)
-  console.log('router', router)
-
-  // 是否需要登录
-  if (!to.meta.secured) {
-    next()
-    return
-  }
-
-  if (localStorage.getItem('TOKEN') === '111111') {
-    next()
-    return
-  }
-
-  alert(`${to.name}拒绝访问，请登录`)
-})
-
-router.afterEach((to, from, next) => {
-  if (to.name) {
-    document.title = to.name
-  } else {
-    document.title = to.path;
-  }
-})
-
-export default router

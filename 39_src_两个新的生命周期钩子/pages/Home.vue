@@ -26,6 +26,23 @@ export default {
         opacity: 1.0
       }
     }
+  },
+  // 只有被缓存过的组件或路由才有作用 keep-alive
+  // mounted() {
+  activated() {
+    console.log('activated')
+    this.timer = setInterval(() => {
+      console.log('setInterval')
+      if (this.h2Style.opacity <= 0) {
+        this.h2Style.opacity = 1
+      }
+      this.h2Style.opacity -= 0.01
+    }, 16)
+  },
+  // beforeDestroy() {
+  deactivated() {
+    console.log('deactivated')
+    clearInterval(this.timer)
   }
 }
 </script>

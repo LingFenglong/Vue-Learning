@@ -65,10 +65,6 @@ export default {
         }
       })
     }
-  },
-  beforeRouteUpdate(to, from, next) {
-    alert('about 更新')
-    next()
   }
 }
 </script>

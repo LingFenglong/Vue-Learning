@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 :style="h2Style">Home组件内容</h2>
+    <h2>Home组件内容</h2>
     <div>
       <ul class="nav nav-tabs">
         <li>
@@ -19,14 +19,7 @@
 
 <script>
 export default {
-  name: 'Home',
-  data() {
-    return {
-      h2Style: {
-        opacity: 1.0
-      }
-    }
-  }
+  name: 'Home'
 }
 </script>
 

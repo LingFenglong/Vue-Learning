@@ -16,7 +16,6 @@
 <!--          {{n.id}}&nbsp;&nbsp;&nbsp;&nbsp;{{n.title}}-->
 <!--        </router-link>-->
         <button @click="replace(n)">{{n.id}}&nbsp;&nbsp;&nbsp;&nbsp;{{n.title}}</button>
-        <input type="text">
       </li>
     </ul>
     <hr/>
@@ -65,10 +64,6 @@ export default {
         }
       })
     }
-  },
-  beforeRouteUpdate(to, from, next) {
-    alert('about 更新')
-    next()
   }
 }
 </script>

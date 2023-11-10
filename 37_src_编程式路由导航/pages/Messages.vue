@@ -3,7 +3,6 @@
     <ul>
       <li>
         <a href="/message1">message001</a>&nbsp;&nbsp;
-        <input type="text">
       </li>
       <li>
         <a href="/message2">message002</a>&nbsp;&nbsp;
