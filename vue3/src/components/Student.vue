@@ -1,31 +1,27 @@
 <template>
-  <div class="student">
-    <Suspense>
-      <template v-slot:default>
-        <Dialog></Dialog>
-      </template>
-      <template v-slot:fallback>
-        <h1>加载中...</h1>
-      </template>
-    </Suspense>
-  </div>
+  <h1>学生信息</h1>
+  <h3>姓名：{{name}}</h3>
+  <h3>年龄：{{age}}</h3>
+  <h3>性别：{{sex}}</h3>
 </template>
 
 <script>
-import {defineAsyncComponent} from "vue";
-const Dialog = defineAsyncComponent(() => import("@/components/Dialog.vue"))
+import { reactive, toRefs } from 'vue'
 export default {
-  name: 'Student',
-  components: {Dialog},
-  setup: function () {
+  setup() {
+    let student = reactive({
+      name: 'zs',
+      age: 19,
+      sex: 'male'
+    })
+
+    return {
+      ...toRefs(student)
+    }
   }
 }
 </script>
 
-<style scoped>
-  .student {
-    width: 700px;
-    height: 200px;
-    background-color: lightcoral;
-  }
+<style>
+
 </style>
